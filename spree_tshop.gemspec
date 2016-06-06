@@ -3,13 +3,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_tshop'
   s.version     = '3.0.7'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
+  s.summary     = 'A Spree application built with the TSHOP template.'
+  s.description = 'Spree TSHOP is a Spree Commerce application which is built with the TSHOP Bootstrap template. It uses the built-in Spree views as much as possible, using mainly Deface overrides to apply the skin. A few Spree extensions are required.'
   s.required_ruby_version = '>= 2.0.0'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
-  # s.homepage  = 'http://www.spreecommerce.com'
+  s.author    = 'Ryan Hunter'
+  s.email     = 'rymalhunt@gmail.com'
+  s.homepage  = 'http://www.ryanhunterweb.com'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
