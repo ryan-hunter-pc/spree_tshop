@@ -1,3 +1,5 @@
+require_relative '../../app/helpers/tshop/frontend_helper.rb'
+
 module SpreeTshop
   class Engine < Rails::Engine
     require 'spree/core'
@@ -16,5 +18,9 @@ module SpreeTshop
     end
 
     config.to_prepare &method(:activate).to_proc
+
+    initializer 'spree_tshop.setup_helpers' do |app|
+      ActiveSupport.on_load( :action_view ){ include Tshop::FrontendHelper }
+    end
   end
 end
