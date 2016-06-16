@@ -1,0 +1,16 @@
+<div class="search-box">
+    <div class="input-group">
+        <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button>
+    </div>
+</div>
+
+<%= form_tag spree.products_path, :method => :get, class: "navbar-form" do %>
+	<div class="search-full text-right">
+	    <a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
+	    <div class="searchInputBox pull-right">
+			<%= search_field_tag :keywords, params[:keywords], :placeholder => Spree.t(:search), class: "search-input" %>
+			<%= submit_tag '', :name => nil, class: "btn-nobg search-btn" %>
+	    </div>
+	</div>
+	<!--/.search-full-->
+<% end %>

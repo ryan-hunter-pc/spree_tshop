@@ -1,0 +1,27 @@
+<div class="container" data-hook="homepage_products">
+	<h1>All Products</h1>
+
+	<div class="row">
+		<% @taxonomies.each do |taxonomy| %>
+			<% cache [I18n.locale, taxonomy, @taxon] do %>
+				<div class="col-md-4 col-sm-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class='taxonomy-root'><%= Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name) %></h4>
+						</div><!-- /.panel-heading -->
+						<div class="panel-body">
+							<%= taxons_tree(taxonomy.root, @taxon) %>
+						</div><!-- /.panel-body -->
+					</div><!-- /.panel panel-default -->
+				</div><!-- /.col-md-4 col-sm-3 -->				
+			<% end %>
+		<% end %>
+	</div><!-- /.row -->
+	
+
+	<% cache(cache_key_for_products) do %>
+		<%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+	<% end %>
+</div>
+
+<%= render partial: 'tshop/products/modal' %>

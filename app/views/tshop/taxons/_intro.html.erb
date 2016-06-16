@@ -1,0 +1,38 @@
+<section id="category-intro" class="section-intro scrollme parallaxOffset">
+    <div class="cat-intro animateme" data-when="exit"
+         data-from="0"
+         data-to="1"
+         data-opacity="0"
+         data-translatey="-220"
+         data-rotatez="0"
+         data-crop="true">
+
+        <div class="cat-intro-text">
+            <div class="display-table hw100">
+                <div class="display-table-cell hw100">
+                    <div class="box-text-cell-inner white animateme" data-when="exit"
+                         data-from="0"
+                         data-to="1"
+                         data-opacity="0"
+                         data-translatey="-260"
+                         data-rotatez="0"
+                         data-crop="true">
+
+                        <h1><%= taxon.name.upcase %></h1>
+
+                        <p><%= taxon.description unless taxon.description.nil? %></p>
+
+                        <p>
+                            <a style="color:#fff" href="#main-container-wrapper" class="scrollto">
+                                <i class="fa fa-2x fa-angle-down"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.cat-intro-text-->
+
+        <%= image_tag "tshop/slider/single-img/2.jpg", alt: "img", class: "cat-intro-banner" %>
+    </div>
+</section>

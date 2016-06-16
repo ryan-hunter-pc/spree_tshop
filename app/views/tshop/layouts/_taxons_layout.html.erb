@@ -1,0 +1,30 @@
+<section class="category-wrapper">
+
+	<%= render partial: 'tshop/taxons/intro', locals: { taxon: @taxon } %>
+
+    <section class="main-container-wrapper clearfix" id="main-container-wrapper">
+        <div class="container main-container">
+            <div class="row">
+
+				<%= flash_messages %>				
+
+				<%= render partial: 'tshop/taxons/topbar' %>
+
+				<%= breadcrumbs(@taxon) %>
+
+                <div class="catColumnWrapper">
+                	<div class="col-lg-3 col-md-3 col-sm-12 filterColumn">
+						<%= yield :sidebar %>
+					</div>
+					<div class="col-lg-9 col-md-9 col-sm-12 categoryColumn">
+						<%= yield %>
+					</div>
+                </div>                
+
+            </div><!-- /.row  -->            
+        </div><!-- /main container -->        
+    </section>
+
+</section><!-- /category-wrapper -->
+
+<%= yield :templates %>

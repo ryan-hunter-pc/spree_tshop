@@ -1,0 +1,98 @@
+<div id="product_<%= product.id %>" class="item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+  <div class="product">
+    <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
+    <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
+    
+      <%= link_to fa_icon('heart'), '#', class: "add-fav tooltipHere", data: { toggle: "tooltip", original_title: "Add to Wishlist", placement: "left" } %>
+      
+      <div class="image">
+          <div class="quickview">
+              <%= link_to "Quick View", product_path(product), remote: true, class: "btn btn-xs btn-quickview" %>
+          </div>
+          <%= link_to product_image(product, itemprop: "image"), url, itemprop: 'url', class: "img-responsive" %>
+          <div class="promotion">
+            <% if product.available_on > 1.week.ago %>
+              <span class="new-product">NEW</span>
+            <% end %>
+            <%# TODO: have this check for discounts/promotions somehow? %>
+            <!--<span class="discount">15% OFF</span>-->
+          </div>
+      </div>
+      
+      <div class="description">
+          <h4><%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %></h4>
+          <!--
+          <%# TODO if we end up using subtitles, put them here %>
+          <div class="grid-description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+          </div>
+          -->
+          <div class="list-description">
+            <p><%= truncate product.description, length: 400 %></p>
+          </div>
+          <% product_size_option_type = product.option_types.find_by(name: 'tshirt-size') %>
+          <% if product_size_option_type %>
+            <span class="size"><%= product_size_option_type.option_values.pluck(:presentation).join(" / ") %></span>
+          <% end %>
+      </div>
+      
+      <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+        <span class="price selling lead" itemprop="price"><%= display_price(product) %></span>
+      </span>
+      
+      <div class="action-control">
+        <%= link_to '#', class: "btn btn-primary" do %>
+          <span class="add2cart">
+            <%= fa_icon('shopping-cart') %>
+            Add to cart
+          </span>
+        <% end %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>
+
+<!-- REFERENCE TSHOP PRODUCT -->
+<!--
+<div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6">
+    <div class="product">
+        <a class="add-fav tooltipHere" data-toggle="tooltip"
+           data-original-title="Add to Wishlist" data-placement="left">
+            <i class="glyphicon glyphicon-heart"></i>
+        </a>
+
+        <div class="image">
+            <div class="quickview">
+                <a data-toggle="modal" class="btn btn-xs btn-quickview"
+                   href="ajax/product.html" data-target="#productSetailsModalAjax">Quick
+                    View </a>
+            </div>
+            <a href="product-details.html"><%= image_tag "tshop/product/30.jpg", alt: "img", class: "img-responsive" %></a>
+
+            <div class="promotion"><span class="new-product"> NEW</span> <span
+                    class="discount">15% OFF</span></div>
+        </div>
+        <div class="description">
+            <h4><a href="product-details.html">aliquam erat volutpat</a></h4>
+
+            <div class="grid-description">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+            </div>
+            <div class="list-description">
+                <p> Sed sed rutrum purus. Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Pellentesque risus lacus, iaculis in ante vitae, viverra hendrerit
+                    ante. Aliquam vel fermentum elit. Morbi rhoncus, neque in vulputate
+                    facilisis, leo tortor sollicitudin odio, quis pellentesque lorem nisi
+                    quis enim. In dolor mi, hendrerit at blandit vulputate, congue a purus.
+                    Sed eget turpis sit amet orci euismod accumsan. Praesent sit amet
+                    placerat elit. </p>
+            </div>
+            <span class="size">XL / XXL / S </span></div>
+        <div class="price"><span>$25</span></div>
+        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
+                class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a>
+        </div>
+    </div>
+</div>
+ -->

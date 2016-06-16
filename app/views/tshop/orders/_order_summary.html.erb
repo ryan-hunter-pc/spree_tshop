@@ -1,0 +1,32 @@
+<fieldset id="order_summary" data-hook>
+  
+  <p data-hook="links" class="text-right hidden-xs">
+    <%#= icon_link_to "Print", '#', onclick: 'window.print();return false;', icon: 'print', class: "btn btn-info" %>
+    <% unless order_just_completed?(@order) %>
+      <% if try_spree_current_user && respond_to?(:spree_account_path) %>
+        <%= icon_link_to Spree.t(:my_account), spree_account_path, icon: 'user', class: "btn btn-info" %>
+      <% end %>
+    <% end %>
+    <%= icon_link_to Spree.t(:back_to_store), spree.root_path, icon: 'home', class: "btn btn-primary" %>
+  </p>
+
+  <h1><%= accurate_title %></h1>
+  <% if order_just_completed?(@order) %>
+    <p><strong><%= Spree.t(:thank_you_for_your_order) %></strong></p>
+  <% end %>
+
+  <div id="order" data-hook>
+    <%= render partial: 'spree/shared/order_details', locals: { order: @order } %>
+
+    <br class="clear" />
+
+    <p data-hook="links">
+      <%= icon_link_to Spree.t(:back_to_store), spree.root_path, icon: 'home', class: "btn btn-primary" %>
+      <% unless order_just_completed?(@order) %>
+        <% if try_spree_current_user && respond_to?(:spree_account_path) %>
+          <%= icon_link_to Spree.t(:my_account), spree_account_path, icon: 'user', class: "btn btn-info" %>
+        <% end %>
+      <% end %>
+    </p>
+  </div>
+</fieldset>

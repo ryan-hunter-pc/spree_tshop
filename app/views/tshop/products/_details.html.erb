@@ -1,0 +1,28 @@
+<h1 class="product-title"><%= @product.name %></h1>
+
+<h3 class="product-code">SKU : <%= @product.sku %></h3>
+
+<div class="rating">
+    <p>
+        <span><i class="fa fa-star"></i></span>
+        <span><i class="fa fa-star"></i></span>
+        <span><i class="fa fa-star"></i></span>
+        <span><i class="fa fa-star"></i></span>
+        <span><i class="fa fa-star-o"></i></span>
+        <span class="ratingInfo">
+            <span> / </span>
+            <a data-toggle="modal" data-target="#modal-review"> Write a review</a>
+        </span>
+    </p>
+</div>
+
+<div class="product-price">
+    <span class="price-sales"><%= display_price(@product) %></span>
+    <% if @product.master.sale_price.present? %>
+        <span class="price-standard"><%= orig_display_price(@product.master) %></span>
+    <% end %>
+</div>
+
+<div class="details-description">
+    <p><%= product_description(@product) rescue Spree.t(:product_has_no_description) %></p>
+</div>

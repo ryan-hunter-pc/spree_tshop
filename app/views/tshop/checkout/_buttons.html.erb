@@ -1,0 +1,25 @@
+
+<div class="cartFooter w100 form-buttons" data-hook="buttons">
+    <div class="box-footer">
+      
+        <div class="pull-left">
+            <%= checkout_back_button %>
+        </div>
+        
+        <div class="pull-right">
+          <% if @order.state == 'address' && try_spree_current_user %>
+              <span data-hook="save_user_address">
+                &nbsp; &nbsp;
+                <%= check_box_tag 'save_user_address', '1', try_spree_current_user.respond_to?(:persist_order_address) %>
+                <%= label_tag :save_user_address, Spree.t(:save_my_address) %>
+              </span>
+          <% end %>
+          <%= checkout_continue_button %>
+        </div>
+        
+        <% if @order.state.in? ['payment', 'confirm'] %>
+      	  <script>Spree.disableSaveOnClick();</script>
+        <% end %>
+    </div>
+</div>
+<!--/ cartFooter -->

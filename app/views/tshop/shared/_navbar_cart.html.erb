@@ -1,0 +1,16 @@
+<!--- this part will be hidden for mobile version -->
+<div class="dropdown  cartMenu ">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-shopping-cart"> </i>
+        <span class="cartRespons"> Cart <%= "(#{current_order.display_total})" if current_order %></span>
+        <b class="caret"> </b>
+    </a>
+
+    <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
+        <%= render partial: 'tshop/shared/navbar_cart_body' %>
+    </div>
+    <!--/.dropdown-menu-->
+</div>
+<!--/.cartMenu-->
+
+

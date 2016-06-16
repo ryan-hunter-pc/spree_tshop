@@ -1,0 +1,95 @@
+<!-- HEADER
+========================================================================= -->
+<div class="row" id="cart_header">
+  <div class="col-lg-9 col-md-9 col-sm-7 col-xs-6 col-xxs-12 text-center-xs">
+      <h1 class="section-title-inner">
+        <span>
+          <i class="glyphicon glyphicon-shopping-cart"></i>
+          <%= Spree.t(:shopping_cart) %>
+        </span>
+      </h1>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar col-xs-6 col-xxs-12 text-center-xs">
+      <h4 class="caps"><a href="category.html"><i class="fa fa-chevron-left"></i> Back to shopping </a></h4>
+  </div>
+</div>
+<!--/.row-->
+
+
+<div class="row">
+
+  <!-- CART CONTAINER
+  ========================================================================= -->
+  <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">  
+    <div data-hook="cart_container">  
+    
+      <!-- CART -->
+      <% if @order.line_items.empty? %>
+        <div data-hook="empty_cart">
+          <div class="alert alert-info"><%= Spree.t(:your_cart_is_empty) %></div>
+          <p><%= link_to Spree.t(:continue_shopping), products_path, class: 'btn btn-default' %></p>
+        </div>
+      <% else %>
+        <div data-hook="outside_cart_form">
+
+          <%= form_for @order, url: update_cart_path, html: { id: 'update-cart' } do |order_form| %>
+            <div data-hook="inside_cart_form">
+
+              <div data-hook="cart_items" class="cartTable table-responsive">
+                <%= render partial: 'form', locals: { order_form: order_form } %>
+              </div>
+
+              <div class="cartFooter w100 form-buttons">
+                <div class="box-footer">    
+                  <div id="empty-cart" class="col-md-6 pull-left" data-hook>
+                      <p id="clear_cart_link" data-hook>
+                        <%= link_to Spree.t(:empty_cart), empty_cart_path, method: :put, class: 'btn btn-default' %>
+                        <%= Spree.t(:or) %>
+                        <%= link_to Spree.t(:continue_shopping), products_path, class: 'continue' %>
+                      </p>
+                  </div>
+                  
+                  <div class="col-md-6 pull-right text-right" data-hook="cart_buttons">
+                    <div class="form-group">
+                      <%= button_tag class: 'btn btn-primary', id: 'update-button' do %>
+                        <%= Spree.t(:update) %>
+                      <% end %>
+                      <%= button_tag class: 'btn btn-success', id: 'checkout-link', name: 'checkout' do %>
+                        Proceed to checkout
+                        <%= fa_icon('arrow-right') %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>      
+              </div><!--/ cartFooter -->
+
+            </div><!-- / inside_cart_form -->
+          <% end %>
+
+        </div><!-- / outside_cart_form -->
+      <% end %>
+
+      
+
+    </div><!-- / cart_container -->  
+  </div><!-- /.col-lg-9 col-md-9 col-sm-7 col-xs-12 -->
+
+  <!-- CART SUMMARY
+  =========================================================================== -->
+  <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
+    <div class="contentBox">
+      <div class="w100 costDetails">
+        <div class="table-block" id="order-detail-content">
+
+          <% unless @order.line_items.empty? %>
+            <%= link_to ("Proceed to checkout " + fa_icon('arrow-right')).html_safe, checkout_path, class: "btn btn-primary btn-lg btn-block mb20" %>
+          <% end %>
+
+          <%= render partial: 'tshop/shared/cart_summary_box' %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.row -->

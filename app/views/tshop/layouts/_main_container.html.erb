@@ -1,0 +1,28 @@
+<div id="main">
+
+	<%# OPTIMIZE This is a sort of temporary "sub-layout dispatcher"...
+			...there is probably a better way to do this %>
+			
+	<% case params[:controller]
+		when 'spree/home' %>
+		<%= render partial: 'tshop/layouts/home_layout' %>
+
+	<% when 'spree/taxons' %>
+		<%= render partial: 'tshop/layouts/taxons_layout' %>
+
+	<% when 'spree/products' %>
+		<%= render partial: 'tshop/layouts/products_layout' %>
+		
+	<% when 'spree/orders', 'spree/checkout' %>
+		<%= render partial: 'tshop/layouts/orders_layout' %>
+
+	<!-- DEFAULT -->
+	<% else %>
+		<%= flash_messages %>
+		<%= breadcrumbs(@taxon) %>
+		<%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
+		<%= yield %>
+		<%= yield :templates %>
+	<% end %>
+
+</div>

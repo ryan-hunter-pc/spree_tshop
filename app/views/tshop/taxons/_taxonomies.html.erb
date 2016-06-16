@@ -1,0 +1,8 @@
+<div id="taxonomies" class="sidebar-item" data-hook>
+    <% max_level = Spree::Config[:max_level_in_taxons_menu] || 1 %>
+    <% @taxonomies.each do |taxonomy| %>
+        <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
+            <%= render partial: 'tshop/taxons/filters/taxonomy_list', locals: { taxonomy: taxonomy, taxon: @taxon, max_level: max_level } %>
+        <% end %>
+    <% end %>
+</div>

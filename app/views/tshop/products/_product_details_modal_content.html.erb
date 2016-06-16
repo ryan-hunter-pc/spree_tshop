@@ -1,0 +1,61 @@
+<button aria-hidden="true" data-dismiss="modal" class="close" type="button"> ×</button>
+
+<!-- PRODUCT IMAGES
+=========================================================================== -->
+<div class="col-lg-5 col-md-5 col-sm-5  col-xs-12">
+    <div class="main-image  col-lg-12 no-padding style3">
+        <a class="product-largeimg-link" href="#">
+        	<!-- <img src="images/product_details/low-res-white/1.jpg" class="img-responsive product-largeimg" alt="img"> -->
+        	<% if defined?(image) && image %>
+			  <%= image_tag image.attachment.url(:large), :itemprop => "image", class: "img-responsive product-largeimg" %>
+			<% else %>
+			  <%= large_image(@product, :itemprop => "image", class: "img-responsive product-largeimg") %>
+			<% end %>
+        </a>
+    </div>
+    <div class="modal-product-thumb">
+		<%# no need for thumbnails unless there is more than one image %>
+		<% if (@product.images + @product.variant_images).uniq.size > 1 %>
+		    <% @product.images.each do |i| %>
+				<a class="thumbLink tmb-<%= i.viewable.id %>">
+					<%= image_tag i.attachment.url(:mini), class: "img-responsive thumbnail", data: { large: i.attachment.url(:large) } %>
+				</a>
+		    <% end %>
+
+		    <% if @product.has_variants? %>
+		      <% @product.variant_images.each do |i| %>
+		        <% next if @product.images.include?(i) %>
+		        <a class="thumbLink tmb-<%= i.viewable.id %>">
+					<%= image_tag i.attachment.url(:mini), class: "img-responsive thumbnail", data: { large: i.attachment.url(:large) } %>
+				</a>
+		      <% end %>
+		    <% end %>
+		<% end %>
+    </div>
+</div>
+<!--/ product Image-->
+
+
+<!-- PRODUCT INFORMATION
+=========================================================================== -->
+<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 modal-details no-padding">
+    <div class="modal-details-inner">
+        
+    	<%= render partial: 'tshop/products/details' %>
+		<%= render partial: 'tshop/products/cart_form' %>
+        <%= render partial: 'tshop/products/share_links' %>
+
+    </div>
+</div>
+<div class="clear"></div>
+
+<script type="text/javascript">
+	// Change large image when click thumb image
+	// Put this script here, because otherwise it will run before modal content exists
+    $(".modal-product-thumb a").click(function () {
+        var largeImage = $(this).find("img").attr('data-large');
+        console.log("clicked!");
+        $(".product-largeimg").attr('src', largeImage);
+        $(".zoomImg").attr('src', largeImage);
+    });
+</script>

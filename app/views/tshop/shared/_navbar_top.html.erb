@@ -1,0 +1,65 @@
+<div class="navbar-top hidden-xs"><!-- RH added the hidden-xs here -->
+    <div class="container">
+        <div class="row">
+
+            <!-- Left topbar -->
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                <div class="pull-left ">
+                    <ul class="userMenu ">
+                        <li><a href="#"> <span class="hidden-xs">HELP</span><i
+                                class="glyphicon glyphicon-info-sign hide visible-xs "></i> </a></li>
+                        <li class="phone-number"><a href="callto:+12025550151"> <span> <i
+                                class="glyphicon glyphicon-phone-alt "></i></span> <span class="hidden-xs"
+                                style="margin-left:5px"> +1-202-555-0151 </span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right topbar -->
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
+                <div class="pull-right">
+                    <ul class="userMenu">
+                        <% if spree_current_user %>
+                            <% if spree_current_user.admin? %>
+                                <li>
+                                    <%= link_to admin_path do %>
+                                        <span class="hidden-xs">Admin Dashboard</span>
+                                        <%= fa_icon 'gears', class: "hide visible-xs" %>
+                                    <% end %>
+                                </li>
+                            <% end %>
+<!--                             <li>
+                                <%= link_to account_path do %>
+                                    <span class="hidden-xs"> My Account</span>
+                                    <i class="fa fa-user hide visible-xs "></i>
+                                <% end %>
+                            </li>
+ -->                            <li class="dropdown hasUserMenu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <%= fa_icon 'user', class: "hide visible-xs" %>
+                                    <span class="hidden-xs">Hi, <%= spree_current_user.email.split('@').first %></span>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><%= icon_link_to "Account", account_path, icon: 'user' %></li>
+                                    <li><%= icon_link_to "Wishlists", account_path, icon: 'heart' %></li>
+                                    <li class="divider"></li>
+                                    <li><%= icon_link_to "Log Out", logout_path, icon: 'sign-out' %></li>
+                                </ul>
+                            </li>
+                        <% else %>
+                            <%# TODO change these to use the TSHOP modals, if you wish: %>
+                            <%#= link_to 'Sign In', login_path #, data: {toggle: "modal", target: "#ModalLogin"} %>
+                            <%#= link_to 'Create Account', signup_path #, data: {toggle: "modal", target: "#SignupModal"} %>
+                            <li><%= link_to 'Sign In', login_path %></li>
+                            <li><%= link_to 'Create Account', signup_path %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--/.navbar-top-->
