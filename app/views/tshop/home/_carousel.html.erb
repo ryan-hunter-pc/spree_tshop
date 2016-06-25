@@ -4,71 +4,35 @@
             <ul id="pager" class="container"></ul>
             <div class="slider slider-v2">
 
-                <div class="slider-item slider-item-img1 "
-                     data-cycle-pager-template="<a href=#> LATEST COLLECTION </a>">
-                    <div class="sliderInfo">
-                        <div class="container">
-                            <div class="col-lg-5 col-md-5 col-sm-5 pull-right sliderText dark alpha80 hidden-xs">
-                                <div class="inner">
-                                    <h1>LATEST COLLECTION</h1>
+                <%# Slides content controlled by spree_slider gem %>
+                <% slider = Spree::Slide.published %>
+                <% if slider.size > 0 %>
+                    <% slider.each_with_index do |slide, index| %>
+                        <div class="slider-item slider-item-img<%= index + 1 %>"
+                             data-cycle-pager-template="<a href=#> <%= slide.name %> </a>">
+                            <div class="sliderInfo">
+                                <div class="container">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 pull-left sliderText dark alpha80 hidden-xs">
+                                        <div class="inner">
+                                            <h1><%= slide.name %></h1>
 
-                                    <p class="hidden-xs"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                        sed diam nonummy nibh euismod tincidunt ut
-                                        laoreet dolore magna aliquam erat volutpa </p>
-                                    <a href="category.html" class="slide-link">SHOP NOW <span
-                                            class="arrowUnicode">►</span></a></div>
+                                            <p class="hidden-xs"><%= slide.body %></p>
+                                            <%= link_to slide.slide_link, class: "slide-link" do %>
+                                                MORE
+                                                <span class="arrowUnicode">►</span>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <%= image_tag slide.slide_image.url, class: "img-responsive parallaximg sliderImg", alt: slide.slide_name %>
                         </div>
-                    </div>
-                    <%= image_tag "tshop/slider/slider1.jpg", class: "img-responsive parallaximg sliderImg", alt: "img" %>
-                </div>
-                <!--/.slider-item-->
+                    <% end %>
+                <% end %>
 
-                <div class="slider-item slider-item-img2  parallax"
-                     data-cycle-pager-template="<a href=#> WOMEN COLLECTION </a>">
-                    <div class="sliderInfo">
-                        <div class="container">
-                            <div class="col-lg-5 col-md-5 col-sm-5 pull-left sliderText dark alpha80 hidden-xs">
-                                <div class="inner">
-                                    <h1>WOMEN COLLECTION</h1>
-
-                                    <p class="hidden-xs"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                        sed diam nonummy nibh euismod tincidunt ut
-                                        laoreet dolore magna aliquam erat volutpa </p>
-                                    <a href="category.html" class="slide-link">SHOP NOW <span
-                                            class="arrowUnicode">►</span></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <%= image_tag "tshop/slider/slider2.jpg", alt: "img", class: "img-responsive parallaximg sliderImg" %>
-                </div>
-                <!--/.slider-item-->
-
-                <div class="slider-item slider-item-img3  parallax"
-                     data-cycle-pager-template="<a href=#> NEW COLLECTION </a>">
-                    <div class="sliderInfo">
-                        <div class="container">
-                            <div class="col-lg-4 col-md-4 col-sm-5 pull-right sliderText dark alpha80 transformRight hidden-xs">
-                                <div class="inner">
-                                    <h1>NEW COLLECTION</h1>
-
-                                    <p class="hidden-xs"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                        sed diam nonummy nibh euismod tincidunt ut
-                                        laoreet dolore magna aliquam erat volutpa </p>
-                                    <a href="category.html" class="slide-link">SHOP NOW <span
-                                            class="arrowUnicode">►</span></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <%= image_tag "tshop/slider/slider3.jpg", alt: "img", class: "img-responsive parallaximg sliderImg" %>
-                </div>
-                <!--/.slider-item-->    
                 
             </div>
-            <!--/.slider-v2-->
         </div>
-        <!--/.slider-content-->
     </div>
-    <!--/.full-container-->
 </div>
-<!--/.banner style2-->
+
