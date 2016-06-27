@@ -1,5 +1,4 @@
 require_relative '../../app/helpers/tshop/frontend_helper.rb'
-require 'spree_slider'
 
 module SpreeTshop
   class Engine < Rails::Engine
