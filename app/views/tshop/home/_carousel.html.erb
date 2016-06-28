@@ -5,7 +5,7 @@
             <div class="slider slider-v2">
 
                 <%# Slides content controlled by spree_slider gem %>
-                <% slider = Spree::Slide.published %>
+                <% slider = Spree::Slide.published.location("Home") %>
                 <% if slider.size > 0 %>
                     <% slider.each_with_index do |slide, index| %>
                         <div class="slider-item slider-item-img<%= index + 1 %>"
