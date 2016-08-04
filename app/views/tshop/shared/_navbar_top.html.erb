@@ -26,10 +26,7 @@
                         <% if spree_current_user %>
                             <% if spree_current_user.admin? %>
                                 <li>
-                                    <%= link_to admin_path do %>
-                                        <span class="hidden-xs">Admin Dashboard</span>
-                                        <%= fa_icon 'gears', class: "hide visible-xs" %>
-                                    <% end %>
+                                    <%= icon_link_to "Admin Dashboard", admin_path, icon: "gears", icon_class: "fa-lg", text_class: "hidden-xs" %>
                                 </li>
                             <% end %>
                             <li class="dropdown hasUserMenu">
