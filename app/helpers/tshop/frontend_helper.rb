@@ -5,14 +5,15 @@ module Tshop
       # parse options and prepare to pass onto link_to
       opt[:icon] ||= 'image'
       opt[:icon_class] ||= ''
+      opt[:text_class] ||= ''
       opt[:position] ||= :before
       opt[:nospace] ||= false
-      link_opt = opt.except(:icon, :before, :after, :nospace)
+      link_opt = opt.except(:icon, :icon_class, :text_class, :position, :nospace)
       
       # build link content
       link_content_items = [fa_icon(opt[:icon], class: opt[:icon_class])]
-      link_content_items << " &nbsp;" unless opt[:nospace]
-      link_content_items << text
+      link_content_items << "&nbsp;" unless opt[:nospace]
+      link_content_items << "<span class=\"#{opt[:text_class]}\">#{text}</span>"
       link_content_items.reverse! if opt[:position] == :after
       link_content = link_content_items.join('').html_safe
 

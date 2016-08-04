@@ -6,12 +6,15 @@
             <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
                 <div class="pull-left ">
                     <ul class="userMenu ">
-                        <li><a href="#"> <span class="hidden-xs">HELP</span><i
-                                class="glyphicon glyphicon-info-sign hide visible-xs "></i> </a></li>
-                        <li class="phone-number"><a href="callto:+12025550151"> <span> <i
-                                class="glyphicon glyphicon-phone-alt "></i></span> <span class="hidden-xs"
-                                style="margin-left:5px"> +1-202-555-0151 </span>
-                        </a></li>
+                        <li>
+                            <a href="#">
+                                <span class="hidden-xs">Help</span>
+                                <i class="fa fa-question-circle hide visible-xs "></i>
+                            </a>
+                        </li>
+                        <li class="phone-number">
+                            <%= icon_link_to "+1-435-555-5555", "tel:+1-435-555-5555", icon: "phone" %>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -29,21 +32,15 @@
                                     <% end %>
                                 </li>
                             <% end %>
-<!--                             <li>
-                                <%= link_to account_path do %>
-                                    <span class="hidden-xs"> My Account</span>
-                                    <i class="fa fa-user hide visible-xs "></i>
-                                <% end %>
-                            </li>
- -->                            <li class="dropdown hasUserMenu">
+                            <li class="dropdown hasUserMenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <%= fa_icon 'user', class: "hide visible-xs" %>
-                                    <span class="hidden-xs">Hi, <%= spree_current_user.email.split('@').first %></span>
+                                    <%= fa_icon 'user', class: "fa-lg" %>
+                                    <span class="hidden-xs" style="text-transform: lowercase;"><%= spree_current_user.email %></span>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><%= icon_link_to "Account", account_path, icon: 'user' %></li>
-                                    <li><%= icon_link_to "Wishlists", account_path, icon: 'heart' %></li>
+                                    <li><%= icon_link_to "My Account", account_path, icon: 'user' %></li>
+                                    <li><%= icon_link_to "My Wishlists", account_path, icon: 'heart' %></li>
                                     <li class="divider"></li>
                                     <li><%= icon_link_to "Log Out", logout_path, icon: 'sign-out' %></li>
                                 </ul>
