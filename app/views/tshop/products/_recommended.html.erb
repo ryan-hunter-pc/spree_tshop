@@ -1,107 +1,24 @@
-<div class="row recommended">
+<% if @recommended_products %>
+    <div class="row recommended">
 
-    <h1> YOU MAY ALSO LIKE </h1>
+        <h1> YOU MAY ALSO LIKE </h1>
 
-    <div id="SimilarProductSlider">
-        <div class="item">
-            <div class="product"><a class="product-image"> <%= image_tag "tshop/product/a1.jpg", alt: "img" %> </a>
+        <div id="SimilarProductSlider">
+            <% @recommended_products.each do |p| %>
+                <div class="item">
+                    <div class="product"><a class="product-image"> <%= image_tag "tshop/product/#{p.id}.jpg", alt: p.name %> </a>
 
-                <div class="description">
-                    <h4><a href="san-remo-spaghetti">YOUR LIFE</a></h4>
+                        <div class="description">
+                            <h4><a href="san-remo-spaghetti">p.name</a></h4>
 
-                    <div class="price"><span>$57</span></div>
+                            <div class="price"><span>display_price(p)</span></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            <% end %>
         </div>
-        <!--/.item-->
 
-        <div class="item">
-            <div class="product"><a class="product-image"> <%= image_tag "tshop/product/a2.jpg", alt: "img" %> </a>
-
-                <div class="description">
-                    <h4><a href="san-remo-spaghetti">RED CROWN</a></h4>
-
-                    <div class="price"><span>$44</span></div>
-                </div>
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item">
-            <div class="product"><a class="product-image"> <%= image_tag "tshop/product/a3.jpg", alt: "img" %> </a>
-
-                <div class="description">
-                    <h4><a href="san-remo-spaghetti">WHITE GOLD</a></h4>
-
-                    <div class="price"><span>$35</span></div>
-                </div>
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item">
-            <div class="product"><a class="product-image"> <%= image_tag "tshop/product/a4.jpg", alt: "img" %> </a>
-
-                <div class="description">
-                    <h4><a href="san-remo-spaghetti">DENIM 4240</a></h4>
-
-                    <div class="price"> $<span>55</span></div>
-                </div>
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item">
-            <div class="product"><a class="product-image"> <%= image_tag "tshop/product/30.jpg", alt: "img" %> </a>
-
-                <div class="description">
-                    <h4><a href="san-remo-spaghetti">CROWN ROCK</a></h4>
-
-                    <div class="price"><span>$500</span></div>
-                </div>
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item">
-            <div class="product"><a class="product-image"> <%= image_tag "tshop/product/a5.jpg", alt: "img" %> </a>
-
-                <div class="description">
-                    <h4><a href="san-remo-spaghetti">SLIM ROCK</a></h4>
-
-                    <div class="price"><span>$50 </span></div>
-                </div>
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item">
-            <div class="product"><a class="product-image"> <%= image_tag "tshop/product/36.jpg", alt: "img" %> </a>
-
-                <div class="description">
-                    <h4><a href="san-remo-spaghetti">ROCK T-Shirts </a></h4>
-
-                    <div class="price"><span>$130</span></div>
-                </div>
-            </div>
-        </div>
-        <!--/.item-->
-
-        <div class="item">
-            <div class="product"><a class="product-image"> <%= image_tag "tshop/product/13.jpg", alt: "img" %> </a>
-
-                <div class="description">
-                    <h4><a href="san-remo-spaghetti">Denim T-Shirts </a></h4>
-
-                    <div class="price"><span>$43</span></div>
-                </div>
-            </div>
-        </div>
-        <!--/.item-->
     </div>
-    <!--/.recommended-->
-
-</div>
-
+<% end %>
 
 <div style="clear:both"></div>
