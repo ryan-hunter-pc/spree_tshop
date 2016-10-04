@@ -140,6 +140,18 @@ module Tshop
       end
     end
 
+    def taxon_image_tag(taxon, img_opts={})
+      taxon_image = taxon.icon
+      until taxon.nil? || !taxon.icon_file_name.nil?
+        taxon = taxon.parent
+      end
+      if taxon
+        image_tag taxon.icon.url(:original), img_opts
+      else
+        nil
+      end
+    end
+
   end
 end
 
