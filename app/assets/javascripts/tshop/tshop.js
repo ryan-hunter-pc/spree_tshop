@@ -10,7 +10,7 @@
 	//= require tshop/jquery.parallax-1.1
 	//= require tshop/helper-plugins/jquery.mousewheel.min
 	//= require tshop/jquery.mCustomScrollbar
-	//= require tshop/plugins/icheck-1.x/icheck.min.js
+	// require tshop/plugins/icheck-1.x/icheck.min.js
 	//= require tshop/grids.js
 	//= require tshop/owl.carousel.min
 	//= require tshop/select2.min

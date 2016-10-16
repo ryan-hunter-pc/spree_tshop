@@ -9,7 +9,7 @@
  *= require tshop/css/alpha
  *= require tshop/css/select2.min
  *= require tshop/css/smoothproducts
- *= require tshop/plugins/icheck-1.x/skins/all
+ * require tshop/plugins/icheck-1.x/skins/all
  *= require tshop/less/btn
  
 * Next, we apply the skin
