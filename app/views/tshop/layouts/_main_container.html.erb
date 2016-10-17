@@ -18,10 +18,12 @@
 
 	<!-- DEFAULT -->
 	<% else %>
-		<%= flash_messages %>
-		<%= breadcrumbs(@taxon) %>
-		<%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
-		<%= yield %>
+		<div class="container main-container">
+			<%= flash_messages %>
+			<%= breadcrumbs(@taxon) %>
+			<%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
+			<%= yield %>
+		</div>
 		<%= yield :templates %>
 	<% end %>
 

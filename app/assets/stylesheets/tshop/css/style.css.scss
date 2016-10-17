@@ -24,6 +24,11 @@
 20.  SUBSCRIBE | PROMOTIONAL MODAL 
 21.  WEB PAGE PROGRESS BAR CSS
 22.  CUSTOM RESPONSIVE
+
+RH ADDED:
+---------
+23.  MY ACCOUNT PAGE
+
  */
 
 /* =============================================================== */
@@ -6141,4 +6146,20 @@ div.quickview {
 
 .white-bg {
     background: #fff;
+}
+
+
+/* =============================================================== */
+/* MY ACCOUNT PAGE
+/* =============================================================== */
+[data-hook="account_my_orders"] tbody tr {
+    font-size: 21px;
+    vertical-align: middle;
+    .label {
+        vertical-align: middle;
+    }
+}
+
+[data-hook="account_my_orders"] .table > tbody > tr > td {
+    line-height: 1;
 }
