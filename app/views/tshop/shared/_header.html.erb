@@ -26,12 +26,11 @@
                 <%= render partial: 'tshop/shared/navbar_main_links' %>
             </ul>
             <!--- this part will be hidden on mobile -->
-            <div class="nav navbar-nav navbar-right hidden-xs">            
-                <%= render partial: 'tshop/shared/navbar_cart' %>
+            <div class="nav navbar-nav navbar-right hidden-xs">
+                <%= render partial: 'tshop/shared/navbar_cart' if Spree::Product.exists? %>
                 <%= render partial: 'tshop/shared/navbar_search' %>
-            </div>    
-        </div>
-        <!--/.nav-collapse -->                
+            </div>
+        </div><!--/.nav-collapse -->
 
     </div><!-- /.container -->
 
