@@ -1,4 +1,4 @@
-<div class="container main-container headerOffset">
+<div class="product-show container main-container">
     <div class="row">
         <div class="breadcrumbDiv col-lg-12">
             <%= breadcrumbs(@taxon) %>
@@ -12,11 +12,11 @@
 
             <!-- Main Image w/ Hover Zoom -->
             <div class='zoom' id='zoomContent'>
-                <a class="gall-item" title="product-title" href="tshop/product_details/hi-res-croped/1.jpg">
+                <a class="gall-item" title="product-title" href="">
                     <% if defined?(image) && image %>
                         <%= image_tag image.attachment.url(:large), class: "zoomImage1 img-responsive", data: {src: image.attachment.url(:original)} %>
                     <% else %>
-                        <%= large_image @product, class: "img-responsive zoomImage1" %>
+                        <%= large_image @product, class: "img-responsive zoomImage1", data: {src: @product.images.first.attachment.url(:original)} %>
                     <% end %>
                 </a>
             </div>
@@ -27,7 +27,7 @@
                 <% if (@product.images + @product.variant_images).uniq.size > 1 %>
                     <% @product.images.each do |i| %>
                         <a class="zoomThumbLink tmb-<%= i.viewable.id %>">
-                            <%= image_tag i.attachment.url(:mini), class: "img-responsive thumbnail", data: { large: i.attachment.url(:large) } %>
+                            <%= image_tag i.attachment.url(:mini), class: "img-responsive thumbnail", data: { large: i.attachment.url(:original) } %>
                         </a>
                     <% end %>
 
@@ -35,7 +35,7 @@
                       <% @product.variant_images.each do |i| %>
                         <% next if @product.images.include?(i) %>
                         <a class="zoomThumbLink tmb-<%= i.viewable.id %>">
-                            <%= image_tag i.attachment.url(:mini), class: "img-responsive thumbnail", data: { large: i.attachment.url(:large) } %>
+                            <%= image_tag i.attachment.url(:mini), class: "img-responsive thumbnail", data: { large: i.attachment.url(:original) } %>
                         </a>
                       <% end %>
                     <% end %>
