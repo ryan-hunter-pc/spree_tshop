@@ -18,7 +18,7 @@
                     </td>
                     <td style="width:40%">
                         <div class="miniCartDescription">
-                            <h4><%= link_to item.name, product_path(item.variant.product) %></h4>
+                            <h4><%= link_to item.name, item.variant.product %></h4>
                             <span class="size"><%= item.variant.options_text %></span>
 
                             <div class="price"><span><%= item.single_money.to_html %></span></div>
