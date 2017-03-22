@@ -10,15 +10,18 @@
                     <td style="width:20%" class="miniCartProductThumb">
                         <div>
                             <% if item.variant.images.length == 0 %>
-                                <%= link_to mini_image(item.variant.product), item.variant.product %>
+                                <%#= link_to mini_image(item.variant.product), item.variant.product %>
+                                <%= mini_image(item.variant.product) %>
                             <% else %>
-                                <%= link_to image_tag(item.variant.images.first.attachment.url(:mini)), item.variant.product %>
+                                <%#= link_to image_tag(item.variant.images.first.attachment.url(:mini)), item.variant.product %>
+                                <%= image_tag(item.variant.images.first.attachment.url(:mini)) %>
                             <% end %>
                         </div>
                     </td>
                     <td style="width:40%">
                         <div class="miniCartDescription">
-                            <h4><%= link_to item.name, item.variant.product %></h4>
+                            <!-- <h4><%= link_to item.name, item.variant.product %></h4> -->
+                            <h4><%= item.name %></h4>
                             <span class="size"><%= item.variant.options_text %></span>
 
                             <div class="price"><span><%= item.single_money.to_html %></span></div>
