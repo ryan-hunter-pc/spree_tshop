@@ -3,7 +3,7 @@
     <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
     <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
     
-      <%= link_to fa_icon('heart'), '#', class: "add-fav tooltipHere", data: { toggle: "tooltip", original_title: "Add to Wishlist", placement: "left" } %>
+      <%#= link_to fa_icon('heart'), '#', class: "add-fav tooltipHere", data: { toggle: "tooltip", original_title: "Add to Wishlist", placement: "left" } %>
       
       <div class="image">
           <div class="quickview">
