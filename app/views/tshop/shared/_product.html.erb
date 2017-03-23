@@ -7,7 +7,7 @@
       
       <div class="image">
           <div class="quickview">
-              <%= link_to "Quick View", product_path(product), remote: true, class: "btn btn-xs btn-quickview" %>
+              <%= link_to "Quick View", spree.product_path(product), remote: true, class: "btn btn-xs btn-quickview" %>
           </div>
           <%= link_to product_image(product, itemprop: "image"), url, itemprop: 'url', class: "img-responsive" %>
           <div class="promotion">
@@ -42,7 +42,7 @@
       </span>
       
       <%# Form adapted from tshop/products/_cart_form %>
-      <%= form_for :order, :url => populate_orders_path do |f| %>
+      <%= form_for :order, :url => spree.populate_orders_path do |f| %>
         <% if product.variants_and_option_values(current_currency).any? %>
           <div class="action-control">
             <%# OPTIMIZE: Give this its own small, streamlined modal here to select variant options %>
