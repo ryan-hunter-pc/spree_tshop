@@ -17,7 +17,7 @@
             </button>
             <div class="hide visible-xs">
                 <%= render partial: 'tshop/shared/navbar_search' %>
-                <%#= render partial: 'tshop/shared/navbar_cart_mobile' %>
+                <%= render partial: 'tshop/shared/navbar_cart_mobile' %>
             </div><!-- /.hide visible-xs -->
         </div>
 
@@ -27,7 +27,7 @@
             </ul>
             <!--- this part will be hidden on mobile -->
             <div class="nav navbar-nav navbar-right hidden-xs">
-                <%#= render partial: 'tshop/shared/navbar_cart' if Spree::Product.exists? %>
+                <%= render partial: 'tshop/shared/navbar_cart' if Spree::Product.exists? %>
                 <%= render partial: 'tshop/shared/navbar_search' %>
             </div>
         </div><!--/.nav-collapse -->
